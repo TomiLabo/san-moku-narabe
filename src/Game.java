@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 import elements.Board;
 import elements.Piece;
 import elements.Player;
