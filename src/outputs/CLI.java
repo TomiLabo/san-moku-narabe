@@ -1,4 +1,5 @@
 package outputs;
+
 import elements.Board;
 import elements.Piece;
 import java.util.ArrayList;
@@ -32,5 +33,4 @@ public class CLI extends Outputter {
             break;
         }
     }
-    
 }

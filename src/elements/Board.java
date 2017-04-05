@@ -1,6 +1,6 @@
 package elements;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import outputs.CLI;
 import outputs.Outputter;
 import types.Color;
@@ -9,10 +9,9 @@ import types.OrderType;
 public class Board {
 
     public static final int SIZE = 3;
-   
     private Piece[][] rawBoard;
     private Outputter outputter;
-    
+
     public Board() {
         this.initializeBoard();
         this.outputter = new CLI();
@@ -27,15 +26,15 @@ public class Board {
         }
         return false;
     }
-    
+
     public Piece[][] getBoard() {
         return this.rawBoard;
     }
-    
+
     public void showCurrentState() {
         outputter.showBoard(this);
     }
-    
+
     private void initializeBoard() {
         this.rawBoard = new Piece[SIZE][SIZE];
         for (int y = 0; y < SIZE; y++) {

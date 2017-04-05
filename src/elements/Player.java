@@ -1,7 +1,6 @@
 package elements;
 
 import java.util.function.BiFunction;
-
 import inputs.Inputter;
 import inputs.KeyBoard;
 import types.OrderType;

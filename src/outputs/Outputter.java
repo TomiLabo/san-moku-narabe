@@ -1,4 +1,5 @@
 package outputs;
+
 import elements.Board;
 import elements.Piece;
 
