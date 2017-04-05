@@ -35,27 +35,14 @@ public class Game {
     }
 
     private void next() {
-        OrderType plan = turnCount % 2 == 0
-                ? OrderType.FIRST_MOVE
-                : OrderType.SECOND_MOVE;
+        final OrderType plan = turnCount % 2 == 0 ? OrderType.FIRST_MOVE : OrderType.SECOND_MOVE;
         this.board.showCurrentState();
         boolean inputIsSuccess = true;
+        final Player player = plan == OrderType.FIRST_MOVE ? this.player1 : this.player2;
         while (inputIsSuccess) {
             boolean result = false;
-            switch (plan) {
-            case FIRST_MOVE:
-                result = player1.putHand((pos, piece) -> (
-                    this.board.tryPutPirce(pos.X(), pos.Y(), piece)
-                ));
-                break;
-            case SECOND_MOVE:
-                result = player2.putHand((pos, piece) -> (
-                    this.board.tryPutPirce(pos.X(), pos.Y(), piece)
-                ));
-            default:
-                // do nothing
-            }
-            inputIsSuccess = ! result;
+            result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos.X(), pos.Y(), piece));
+            inputIsSuccess = !result;
             if (!inputIsSuccess) System.out.println("不正な入力です．");
         }
         turnCount++;
