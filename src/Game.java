@@ -35,13 +35,13 @@ public class Game {
     private void next() {
         final OrderType plan = turnCount % 2 == 0 ? OrderType.FIRST_MOVE : OrderType.SECOND_MOVE;
         this.board.showCurrentState();
-        boolean inputIsSuccess = true;
+        boolean inputIsFail = true;
         final Player player = plan == OrderType.FIRST_MOVE ? this.player1 : this.player2;
-        while (inputIsSuccess) {
+        while (inputIsFail) {
             boolean result = false;
             result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos.X(), pos.Y(), piece));
-            inputIsSuccess = !result;
-            if (!inputIsSuccess) System.out.println("不正な入力です．");
+            inputIsFail = !result;
+            if (!inputIsFail) System.out.println("不正な入力です．");
         }
         turnCount++;
     }

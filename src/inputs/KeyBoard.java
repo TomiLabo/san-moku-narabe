@@ -11,6 +11,6 @@ public class KeyBoard extends Inputter {
         System.out.println("縦軸座標を入力 (0から開始)");
         Scanner sc2 = new Scanner(System.in);
         int y = sc2.nextInt();
-        return new Point(x, y);
+        return new Point(y, x);
     }
 }
