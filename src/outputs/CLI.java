@@ -1,4 +1,4 @@
-package output;
+package outputs;
 import elements.Board;
 import elements.Piece;
 import java.util.ArrayList;

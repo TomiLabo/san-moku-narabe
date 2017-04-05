@@ -1,8 +1,8 @@
 package elements;
 import java.util.ArrayList;
 
-import output.CLI;
-import output.Outputter;
+import outputs.CLI;
+import outputs.Outputter;
 import types.Color;
 import types.OrderType;
 

@@ -1,4 +1,4 @@
-package input;
+package inputs;
 
 import java.util.Scanner;
 import types.Point;
