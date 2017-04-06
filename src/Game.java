@@ -1,7 +1,6 @@
 import elements.Board;
-import elements.Piece;
-import elements.Player;
-import types.Color;
+import elements.Computer;
+import elements.IPlayer;
 import types.OrderType;
 
 /**
@@ -11,37 +10,38 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
-        while (! game.isEnd()) {
-            game.next();
-        }
+        while (!game.isEnd()) game.next();
     }
     
     private Board board;
-    private Player player1;
-    private Player player2;
+    private IPlayer player1;
+    private IPlayer player2;
     private int turnCount = 0;
     
     public Game() {
         this.board = new Board();
-        this.player1 = new Player(OrderType.FIRST_MOVE);
-        this.player2 = new Player(OrderType.SECOND_MOVE);
+        this.player1 = new Computer(OrderType.FIRST_MOVE);
+        this.player2 = new Computer(OrderType.SECOND_MOVE);
     }
     
     private boolean isEnd() {
-        // TODO: 勝敗判定
+        if (turnCount == 9) {
+            System.out.println("ゲーム終了です");
+            this.board.showCurrentState();
+            return true;
+        }
         return false;
     }
 
     private void next() {
         final OrderType plan = turnCount % 2 == 0 ? OrderType.FIRST_MOVE : OrderType.SECOND_MOVE;
         this.board.showCurrentState();
-        boolean inputIsFail = true;
-        final Player player = plan == OrderType.FIRST_MOVE ? this.player1 : this.player2;
-        while (inputIsFail) {
+        final IPlayer player = plan == OrderType.FIRST_MOVE ? this.player1 : this.player2;
+        while (true) {
             boolean result = false;
             result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos.X(), pos.Y(), piece));
-            inputIsFail = !result;
-            if (!inputIsFail) System.out.println("不正な入力です．");
+            if (!result) System.out.println("不正な入力です．");
+            else if (result) break;
         }
         turnCount++;
     }
