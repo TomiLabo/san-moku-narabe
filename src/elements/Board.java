@@ -1,10 +1,9 @@
 package elements;
 
-import java.util.ArrayList;
 import outputs.CLI;
 import outputs.Outputter;
 import types.Color;
-import types.OrderType;
+import types.Point;
 
 public class Board {
 
@@ -17,7 +16,9 @@ public class Board {
         this.outputter = new CLI();
     }
 
-    public boolean tryPutPirce(int x, int y, Piece piece) {
+    public boolean tryPutPirce(final Point point, final Piece piece) {
+        int x = point.X();
+        int y = point.Y();
         if (x < 0 || SIZE <= x) return false;
         if (y < 0 || SIZE <= y) return false;
         if (this.rawBoard[y][x].getColor() == Color.EMPTY) {

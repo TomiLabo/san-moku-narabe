@@ -25,7 +25,8 @@ public class Game {
     }
     
     private boolean isEnd() {
-        if (turnCount == 9) {
+        final int FULL_PIECE_IN_BOARD = 9;
+        if (turnCount == FULL_PIECE_IN_BOARD) {
             System.out.println("ゲーム終了です");
             this.board.showCurrentState();
             return true;
@@ -34,12 +35,12 @@ public class Game {
     }
 
     private void next() {
-        final OrderType plan = turnCount % 2 == 0 ? OrderType.FIRST_MOVE : OrderType.SECOND_MOVE;
+        final OrderType plan = OrderType.getOrderByCount(turnCount);
         this.board.showCurrentState();
-        final IPlayer player = plan == OrderType.FIRST_MOVE ? this.player1 : this.player2;
+        final IPlayer player = plan.isFirst() ? this.player1 : this.player2;
         while (true) {
             boolean result = false;
-            result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos.X(), pos.Y(), piece));
+            result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos, piece));
             if (!result) System.out.println("不正な入力です．");
             else if (result) break;
         }

@@ -1,7 +1,6 @@
 package inputs;
 
 import java.util.NoSuchElementException;
-
 import types.InputType;
 
 public class InputterFactory {
