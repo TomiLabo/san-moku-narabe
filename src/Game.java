@@ -1,6 +1,7 @@
 import elements.Board;
 import elements.Computer;
 import elements.IPlayer;
+import elements.Player;
 import types.OrderType;
 
 /**
@@ -19,13 +20,14 @@ public class Game {
     private int turnCount = 0;
     
     public Game() {
+        System.out.println("Initialize content...");
         this.board = new Board();
-        this.player1 = new Computer(OrderType.FIRST_MOVE);
-        this.player2 = new Computer(OrderType.SECOND_MOVE);
+        this.player1 = new Player(OrderType.FIRST_MOVE);
+        this.player2 = new Player(OrderType.SECOND_MOVE);
     }
     
     private boolean isEnd() {
-        final int FULL_PIECE_IN_BOARD = 9;
+        final int FULL_PIECE_IN_BOARD = this.board.SIZE * this.board.SIZE;
         if (turnCount == FULL_PIECE_IN_BOARD) {
             System.out.println("ゲーム終了です");
             this.board.showCurrentState();
@@ -41,8 +43,8 @@ public class Game {
         while (true) {
             boolean result = false;
             result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos, piece));
-            if (!result) System.out.println("不正な入力です．");
-            else if (result) break;
+            // if (!result) System.out.println("不正な入力です．再入力してください");
+            if (result) break;
         }
         turnCount++;
     }

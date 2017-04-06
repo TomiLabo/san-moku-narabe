@@ -10,13 +10,14 @@ public class CLI extends Outputter {
     public void showBoard(Board board) {
         Piece[][] rawBoard = board.getBoard();
         for (Piece[] line : rawBoard) {
+            System.out.print("|");
             for (Piece piece : line) {
-                System.out.print("[");
                 this.showPiece(piece);
-                System.out.print("]");
+                System.out.print("|");
             }
             System.out.println("");
         }
+        System.out.println("");
     }
 
     @Override
