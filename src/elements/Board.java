@@ -1,5 +1,6 @@
 package elements;
 
+import org.eclipse.jdt.annotation.NonNull;
 import outputs.CLI;
 import outputs.Outputter;
 import types.Color;
@@ -8,15 +9,15 @@ import types.Point;
 public class Board {
 
     public static final int SIZE = 3;
-    private Piece[][] rawBoard;
-    private Outputter outputter;
+    private @NonNull Piece[][] rawBoard;
+    private @NonNull Outputter outputter;
 
     public Board() {
         this.initializeBoard();
         this.outputter = new CLI();
     }
 
-    public boolean tryPutPirce(final Point point, final Piece piece) {
+    public boolean tryPutPirce(@NonNull final Point point, @NonNull final Piece piece) {
         int x = point.X();
         int y = point.Y();
         if (x < 0 || SIZE <= x) return false;
@@ -28,7 +29,7 @@ public class Board {
         return false;
     }
 
-    public Piece[][] getBoard() {
+    public @NonNull Piece[][] getBoard() {
         return this.rawBoard;
     }
 

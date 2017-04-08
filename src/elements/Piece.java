@@ -1,13 +1,15 @@
 package elements;
 
 import java.util.NoSuchElementException;
+
+import org.eclipse.jdt.annotation.NonNull;
 import types.Color;
 import types.OrderType;
 
 public class Piece {
 
-    private OrderType order;
-    private Color color;
+    private @NonNull OrderType order;
+    private @NonNull Color color;
 
     public Piece(OrderType order) {
         this.order = order;
@@ -23,7 +25,7 @@ public class Piece {
         return this.color;
     }
 
-    private void setColor() {
+    private void setColor() throws NoSuchElementException {
         switch (this.order) {
         case FIRST_MOVE:
             this.color = Color.BLACK;

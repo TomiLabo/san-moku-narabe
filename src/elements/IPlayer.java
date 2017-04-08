@@ -9,5 +9,5 @@ public interface IPlayer {
      * @param {BiFunction<Point, Piece, Boolean>} boardが持っているコマを置くことを試みる関数
      * @return {boolean} 置くことに成功したかどうか
      */
-    public boolean putHand(BiFunction<Point, Piece, Boolean> putMethod);
+    public boolean putHand(@NonNull BiFunction<Point, Piece, Boolean> putMethod);
 }

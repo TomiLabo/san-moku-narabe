@@ -2,6 +2,7 @@ package inputs;
 
 import java.util.Scanner;
 import types.Point;
+import org.eclipse.jdt.annotation.NonNull;
 
 public class KeyBoard extends Inputter {
     private static Scanner sc;
@@ -10,10 +11,8 @@ public class KeyBoard extends Inputter {
          sc = new Scanner(System.in);
     }
 
-    public Point input() {
-        // System.out.println("横軸座標を入力 (0から開始)");
+    public @NonNull Point input() {
         int x = sc.nextInt();
-        // System.out.println("縦軸座標を入力 (0から開始)");
         int y = sc.nextInt();
         return new Point(y, x);
     }
