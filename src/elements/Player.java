@@ -14,7 +14,7 @@ public class Player implements IPlayer {
 
     public Player(@NonNull OrderType order) {
         this.order = order;
-        this.inputter = InputterFactory.create(InputType.KeyBoard);
+        this.inputter = new InputterFactory().create(InputType.KeyBoard);
     }
 
     public OrderType getOrder() {

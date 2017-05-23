@@ -2,11 +2,11 @@ package inputs;
 
 import java.util.NoSuchElementException;
 import org.eclipse.jdt.annotation.NonNull;
-
+import interfaces.Factory;
 import types.InputType;
 
-public class InputterFactory {
-    public static @NonNull Inputter create(@NonNull InputType type) throws NoSuchElementException {
+public class InputterFactory implements Factory<InputType, Inputter> {
+    public @NonNull Inputter create(@NonNull InputType type) throws NoSuchElementException {
         switch (type) {
         case KeyBoard:
             return new KeyBoard();

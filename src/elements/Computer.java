@@ -16,7 +16,7 @@ public class Computer implements IPlayer {
 
     public Computer(OrderType order) {
         this.order = order;
-        this.inputter = InputterFactory.create(InputType.AI);
+        this.inputter = new InputterFactory().create(InputType.AI);
     }
     
     @Override
