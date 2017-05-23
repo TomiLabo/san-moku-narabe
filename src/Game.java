@@ -43,10 +43,8 @@ public class Game {
         while (true) {
             boolean result = false;
             result = player.putHand((pos, piece) -> this.board.tryPutPirce(pos, piece));
-            // if (!result) System.out.println("不正な入力です．再入力してください");
             if (result) break;
         }
         turnCount++;
     }
 }
-

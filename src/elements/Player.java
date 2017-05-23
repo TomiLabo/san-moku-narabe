@@ -1,7 +1,7 @@
 package elements;
 
-import java.util.function.BiFunction;
 import org.eclipse.jdt.annotation.NonNull;
+import functions.PlayOneHand;
 import inputs.Inputter;
 import inputs.InputterFactory;
 import types.InputType;
@@ -22,8 +22,8 @@ public class Player implements IPlayer {
     }
 
     @Override
-    public boolean putHand(@NonNull BiFunction<Point, Piece, Boolean> putMethod) {
+    public boolean putHand(@NonNull PlayOneHand<Point, Piece, Boolean> playHand) {
         Point point = inputter.input();
-        return putMethod.apply(point, new Piece(this.order));
+        return playHand.apply(point, new Piece(this.order));
     }
 }
